@@ -7,7 +7,11 @@ class Main
 	static public function main():Void
 	{
 		parseFileData(1);
+	}
 
+	// day 1 solution
+	static public function sonarScan():Void
+	{
 		var fileShit:Array<Int> = fileData.map(function(f)
 		{
 			return Std.parseInt(f);
