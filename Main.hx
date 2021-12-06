@@ -1,13 +1,10 @@
-package src;
-
 import sys.io.File;
 
 class Main
 {
-	public static function main()
+	static public function main():Void
 	{
 		var fileStuff:String = File.getContent('days/day1.txt');
-
 		trace(fileStuff);
 	}
 }
