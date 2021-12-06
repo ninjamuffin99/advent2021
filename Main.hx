@@ -6,7 +6,40 @@ class Main
 
 	static public function main():Void
 	{
-		parseFileData(1);
+		parseFileData(2);
+
+		var commands:Array<Dynamic> = fileData.map(function(f)
+		{
+			return [f.split(' ')[0], f.split(' ')[1]];
+		});
+
+		var horiz:Int = 0;
+		var depth:Int = 0;
+		var aim:Int = 0;
+
+		for (command in commands)
+		{
+			var dir = command[0];
+			var magnitude = Std.parseInt(command[1]);
+
+			switch (dir)
+			{
+				case 'forward':
+					horiz += magnitude;
+					depth += aim * magnitude;
+				case 'up':
+					///depth -= magnitude;
+					aim -= magnitude;
+				case 'down':
+					// depth += magnitude;
+					aim += magnitude;
+			}
+			trace('COMMAND $command');
+			trace('horiz is: $horiz -- depth is : $depth -- aim is: $aim');
+		}
+
+		trace('DEPTH OF: $depth - HORIZ OF: $horiz');
+		trace(depth * horiz);
 	}
 
 	// day 1 solution
