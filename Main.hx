@@ -8,10 +8,44 @@ class Main
 	{
 		parseFileData(1);
 
-		for (files in fileData)
+		var fileShit:Array<Int> = fileData.map(function(f)
 		{
-			trace(files);
+			return Std.parseInt(f);
+		});
+
+		var prevNumber:Int = 0;
+		var increaseCounter:Int = 0;
+
+		var crackHead:Array<Int> = [];
+
+		for (index => files in fileShit)
+		{
+			var sumOfDumbShit:Int = 0;
+
+			if (index <= fileShit.length - 3)
+			{
+				sumOfDumbShit += fileShit[index];
+				sumOfDumbShit += fileShit[index + 1];
+				sumOfDumbShit += fileShit[index + 2];
+			}
+
+			crackHead.push(sumOfDumbShit);
 		}
+
+		for (crack in crackHead)
+		{
+			if (prevNumber != 0 && prevNumber < crack)
+			{
+				increaseCounter++;
+				trace('increase depth! $crack');
+			}
+
+			prevNumber = crack;
+		}
+
+		trace(crackHead);
+
+		trace(increaseCounter);
 	}
 
 	static public function parseFileData(day:Int)
