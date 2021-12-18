@@ -37,11 +37,14 @@ class Main
 
 			for (h in 0...heightOfBits)
 			{
-				trace(splitShit[h][w]);
-				counter += Std.int(splitShit[h][w]);
+				if (splitShit[h][w] != null)
+				{
+					// trace(splitShit[h][w]);
+					counter += Std.int(splitShit[h][w]);
+				}
 			}
 
-			trace(counter);
+			// trace(counter);
 
 			if (counter >= heightOfBits / 2)
 			{
@@ -57,10 +60,30 @@ class Main
 
 		var funnyBinaryFunc = function(bin:String)
 		{
-			var swagNum:Int = Std.parseInt(bin);
+			var splitBin:Array<String> = bin.split('');
+
+			trace(bin);
+
+			var calc:Int = 0;
+
+			for (index => bit in splitBin)
+			{
+				var funnyIndex:Int = (index - splitBin.length + 1) * -1;
+
+				var dipshitMath:Int = Std.int(Math.pow(2, funnyIndex));
+
+				if (bit == "1")
+					calc += dipshitMath;
+
+				trace('$funnyIndex : $bit : $dipshitMath');
+			}
+
+			trace(calc);
 		};
 
-		trace(Std.parseInt('000100'));
+		funnyBinaryFunc('011001000');
+
+		// trace(Std.parseInt('000100'));
 
 		trace(commonBits);
 		trace(uncommonBits);
