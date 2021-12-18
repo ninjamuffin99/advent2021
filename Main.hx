@@ -6,8 +6,69 @@ class Main
 
 	static public function main():Void
 	{
-		parseFileData(2);
+		parseFileData(3);
 
+		var joinedShit:String = fileData.join("");
+
+		var lengthOfBits = fileData[0].length;
+		var heightOfBits = fileData.length;
+
+		var splitShit:Array<Array<Int>> = [];
+
+		splitShit = fileData.map(function(f)
+		{
+			var funny:Array<Int> = [];
+			for (str in f.split(""))
+			{
+				funny.push(Std.parseInt(str));
+			}
+
+			return funny;
+		});
+		// 3797
+		// 298
+
+		var commonBits:Array<Int> = [];
+		var uncommonBits:Array<Int> = [];
+
+		for (w in 0...lengthOfBits)
+		{
+			var counter:Float = 0;
+
+			for (h in 0...heightOfBits)
+			{
+				trace(splitShit[h][w]);
+				counter += Std.int(splitShit[h][w]);
+			}
+
+			trace(counter);
+
+			if (counter >= heightOfBits / 2)
+			{
+				commonBits.push(1);
+				uncommonBits.push(0);
+			}
+			else
+			{
+				commonBits.push(0);
+				uncommonBits.push(1);
+			}
+		}
+
+		var funnyBinaryFunc = function(bin:String)
+		{
+			var swagNum:Int = Std.parseInt(bin);
+		};
+
+		trace(Std.parseInt('000100'));
+
+		trace(commonBits);
+		trace(uncommonBits);
+	}
+
+	// day 2
+	static public function depthCalculation():Void
+	{
 		var commands:Array<Dynamic> = fileData.map(function(f)
 		{
 			return [f.split(' ')[0], f.split(' ')[1]];
